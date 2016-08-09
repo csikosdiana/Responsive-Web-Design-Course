@@ -1,0 +1,111 @@
+<!-- This is a first example of using a template -->
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	
+	<meta charset="utf-8">
+	
+	<title>Animal Gallery</title>
+
+	<!-- include our libraries and css files -->
+
+
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="assignment.css" rel="stylesheet">
+
+	</head>
+
+<body>
+
+    <div class = "container">
+		<div class="page-header">
+			<h1 class = "mytitle">Animal Albums</h1>
+		</div>
+	
+		<ul class="nav nav-tabs nav-justified">
+			<li role="" class="active"><a href = "#" id="albums-tab">Albums</a></li>
+			<li role=""><a href = "#" id = "the-album-tab" >Photos</a></li>
+			<li role=""><a href = "#" id = "details-tab">Details</a></li>
+		</ul>
+		
+		<br/><br/>
+		
+		<div id="content"  class="container-fluid"  role="main">
+		</div>
+	</div>
+	
+	
+	<!-- TEMPLATES -->
+	
+	<!-- this is the template for the albums view -->
+	<script id="albums-template" type="text/x-handlebars-template">
+		<div class ="row">
+			{{#each category}}
+				<div class="col-xs-12 col-md-4">
+					<div class="album-clicking"  data-id="{{@index}}">
+						{{#each animals}}
+							{{#if @first}}
+							<img class="myimg" src="{{image1}}" alt="">
+							{{/if}}
+						{{/each}}
+					
+						<div class="caption">
+							<h4> {{name}} </h4>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	
+	</script>
+	
+	<!-- this is the template for the the_album view -->
+	<script id="the_album_template" type="text/x-handlebars-template">
+		<div class ="row">
+			{{#each animals}}
+				<div class="col-xs-12 col-md-3">
+					<div class="the-album-click"  data-id="{{@index}}">
+						<img class="myimg" src="{{image1}}" alt=""/>
+					</div>
+					
+					<div class="caption">
+						<h4> {{name}} </h4>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	</script>
+	
+	<script id="details_template" type="text/x-handlebars-template">
+		<div class ="row">
+			<div class="col-xs-12 col-md-1">
+				<span class="glyphicon glyphicon-chevron-left myicons" id = "left-click"></span>
+			</div>
+			<div class="col-xs-12 col-md-5">
+				<img class="myimg" src="{{image1}}" alt=""/>
+				<img class="myimg" src="{{image2}}" alt=""/>
+			</div>
+			
+			<div class="col-xs-12 col-md-5">
+					<h3> {{name}}</h3>
+					<p> {{description}}</p>
+			</div>
+			<div class="col-xs-12 col-md-1">
+				<span class="glyphicon glyphicon-chevron-right myicons" id = "right-click"></span>
+			</div>
+
+		</div>
+	</script>
+	
+	
+	
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/handlebars-v3.0.3.js"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="AnimalsData.js"></script>
+	<script src="assignment.js"></script>
+
+</body>
+</html>
